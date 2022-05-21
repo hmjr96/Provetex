@@ -17,6 +17,14 @@ class CreateArticlesTable extends Migration
             $table->increments('idArticle');
             $table->string('nom');
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('idCategorieidCategorie')->nullable();
+           $table->unsignedBigInteger('idImage')->nullable();
+           $table->unsignedBigInteger('idColor')->nullable();
+           $table->unsignedBigInteger('idOrder')->nullable();
+           $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('SET NULL');
+           $table->foreign('idImage')->references('idImage')->on('images')->onDelete('SET NULL');
+           $table->foreign('idColor')->references('idColor')->on('colors')->onDelete('SET NULL');
+           $table->foreign('idOrder')->references('idOrder')->on('orders')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
